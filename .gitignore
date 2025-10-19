@@ -1,0 +1,34 @@
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Editor/OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Large forecast/data artifacts (do not commit)
+forecast_aifs_ens/**
+*.grib2
+*.grib
+*.idx
+*.nc
+*.zarr
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+
+# Local config/secrets
+.env
+*.token
+
