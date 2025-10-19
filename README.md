@@ -214,7 +214,7 @@ python aam_scripts/download_aifs_ens_u_13pl.py \
   --date 2025-10-16 \
   --skip-ef --skip-cf \
   --source-order ecmwf,aws \
-  --out-dir "D:/nixon et al/forecast_aifs_ens"
+  --out-dir "forecast_aifs_ens"
 ```
 
 Compute ensemble AAM at 13L and map to 37L
@@ -224,19 +224,19 @@ setx ECCODES_GRIB_64BIT_GLOBALS 1
 
 python aam_scripts/compute_aam_open_data_ens.py \
   --engine eccodes \
-  --input "D:/nixon et al/forecast_aifs_ens/*.grib2" \
+  --input "forecast_aifs_ens/*.grib2" \
   --use-open-data-13 \
   --hours 00:00 06:00 12:00 18:00 \
-  --map-monthly-csv "D:/nixon et al/aam_data/mapping_13to37.csv" \
-  --output-csv "D:/nixon et al/aam_data/aam_ens_6h_mapped.csv"
+  --map-monthly-csv "aam_data/mapping_13to37.csv" \
+  --output-csv "aam_data/aam_ens_6h_mapped.csv"
 ```
 
 Compute daily ensemble GWO
 ```bash
 python aam_scripts/compute_gwo_daily_ens.py \
-  --aam-ens-csv "D:/nixon et al/aam_data/aam_ens_6h_mapped.csv" \
-  --climo-csv   "D:/nixon et al/aam_data/aam_climo.csv" \
-  --out-csv     "D:/nixon et al/aam_data/gwo_daily_ens.csv" \
+  --aam-ens-csv "aam_data/aam_ens_6h_mapped.csv" \
+  --climo-csv   "aam_data/aam_climo.csv" \
+  --out-csv     "aam_data/gwo_daily_ens.csv" \
   --window-days 5
 ```
 
