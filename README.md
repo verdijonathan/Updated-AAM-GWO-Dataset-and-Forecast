@@ -110,7 +110,7 @@ phase = phase.where(phase != 9, other=8)
 ### Phase calibration (origin and numbering)
 
 - Orientation in this project: x = `GWO2` (horizontal), y = `GWO1` (vertical). Angles use `atan2(GWO1, GWO2)` and increase counter‑clockwise.
-- Default numbering (from `compute_gwo_daily.py`): Phase 1 spans 0–45° (along +`GWO2`), then increases CCW. The “Interpretation of phases” section above reflects this default.
+- Default numbering (from `compute_gwo_daily.py`): Phase 1 spans 0–45° (along +`GWO2`), then increases CCW.
 - Calibrated numbering (preferred here): rotate angles by 180° so Phase 1 begins in the left→bottom‑left sector (180–225°), then increases CCW. Use `aam_scripts/calibrate_gwo_phase_yx.py` to apply this without changing `GWO1/GWO2/amp`.
 
 Phase mapping (default → calibrated):
@@ -176,7 +176,7 @@ Notes:
 - The header keys in the output CSV appear as `AAMstd/TENDstd` and are equivalent to `mr_std_kg_m2_s/tend_std_kg_m2_s2`
 - The climatology base period is 1991–2020. Changing this period will change standardization and thus the resulting `GWO1/GWO2` magnitudes and `amp`.
 
-### File manifest (this folder)
+### File manifest
 - `compute_aam_simple.py` – AAM integral from NetCDF
 - `compute_aam_from_cloud.py` – AAM integral from cloud Zarr with QC
 - `download_era5_u_yearly.py` – ERA5 u-wind downloader
@@ -185,11 +185,6 @@ Notes:
 - `aam_climo.csv` – AAM time series used to derive the daily climatology (base 1991–2020)
 - `aam_master_1974_2024.csv` – merged AAM time series
 - `gwo_new.csv` – final daily GWO dataset
-
-Notes:
-- Preserves the header comment lines (`# AAMstd`, `# TENDstd`) and all data columns; only `phase` is recomputed.
-- `GWO1`, `GWO2`, and `amp` are unchanged by calibration.
-- Overwrites the input file when `--out-csv` equals `--in-csv` (as shown above).
 
 ### Forecast notes: ECMWF direct + 13→37 mapping calibration
 
