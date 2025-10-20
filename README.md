@@ -25,8 +25,11 @@ Scripts used (found in this folder):
 ### Methodology
 
 1) Compute total relative AAM time series
- - Discrete integral of zonal wind weighted by layer thickness and latitude:
-  $$ M_R = \frac{a^3}{g} \int\int\int \cos^2(\phi)\, u \, dp \, d\phi \, d\lambda $$
+- Discrete integral of zonal wind weighted by layer thickness and latitude:
+
+$$
+M_R = \frac{a^3}{g} \iiint \cos^2(\phi)\, u \, dp \, d\phi \, d\lambda
+$$
 - Key implementation details:
   - Pressure layer thickness `dp` via half-levels with top=1 hPa, bottom=1000 hPa
   - Zonal mean over longitude, weighted by $\cos^2(\phi)$, integrated over latitude with grid spacing
